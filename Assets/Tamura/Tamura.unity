@@ -429,7 +429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _limitTime:
-    value: 60
+    value: 13
   _score:
     value: 0
   _isGame: 0
