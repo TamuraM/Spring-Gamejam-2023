@@ -24,6 +24,8 @@ public class Decision : InstanceSystem<Decision>
     [SerializeField, Tooltip("服のオブジェクト配列")] GameObject _clothesPanel;
     [SerializeField, Tooltip("靴のオブジェクト配列")] GameObject _shoesPanel;
     [SerializeField, Tooltip("アクセサリーのオブジェクト配列")] GameObject _accessoryPanel;
+    [SerializeField] ParticleSystem _successEffect;
+    [SerializeField] ParticleSystem _failedEffect;
     //服のパラメーターを格納する変数
     public Parameter _clothes = new Parameter(0, 0, 0, 0, 0);
     //靴のパラメーターを格納する変数
@@ -34,6 +36,9 @@ public class Decision : InstanceSystem<Decision>
     public Parameter _customer = new Parameter(3, 3, 3, 3, 3);
     GameManager _gameManager;
     Button _decisionButton;
+    CustomerController _customerControlle;
+    CustomerGenerator _customerGenerator;
+
 
 
     //プロパティ化
@@ -46,6 +51,8 @@ public class Decision : InstanceSystem<Decision>
     {
         _gameManager = FindObjectOfType<GameManager>();
         _decisionButton = GetComponent<Button>();
+        _customerGenerator = FindObjectOfType<CustomerGenerator>();
+        _customerGenerator.Generate();
     }
     private void Update()
     {
@@ -56,8 +63,8 @@ public class Decision : InstanceSystem<Decision>
     }
     public void DecisionButton()
     {
-        CustomerController customer = FindObjectOfType<CustomerController>();
-        CustomerGenerator customerGenerator = FindObjectOfType<CustomerGenerator>();
+        _customerControlle = FindObjectOfType<CustomerController>();
+        _customerGenerator = FindObjectOfType<CustomerGenerator>();
         //服と靴とアクセサリーのcute値を合計
         int cute = _clothes._cute + _shoes._cute + _accessory._cute;
         //服と靴とアクセサリーのcool値を合計
@@ -68,66 +75,71 @@ public class Decision : InstanceSystem<Decision>
         int sexy = _clothes._sexy + _shoes._sexy + _accessory._sexy;
         //服と靴とアクセサリーのghostly値を合計
         int ghostly = _clothes._ghostly + _shoes._ghostly + _accessory._ghostly;
-        for(int i = 0; i < 5; i++)
+        this._clothes = new Parameter(0, 0, 0, 0, 0);
+        this._shoes = new Parameter(0, 0, 0, 0, 0);
+        this._accessory = new Parameter(0, 0, 0, 0, 0);
+        for (int i = 0; i < 5; i++)
         {
             _clothesPanel.transform.GetChild(i).SetSiblingIndex(Random.Range(0, 6));
             _shoesPanel.transform.GetChild(i).SetSiblingIndex(Random.Range(0, 6));
             _accessoryPanel.transform.GetChild(i).SetSiblingIndex(Random.Range(0, 6));
         }
-        //客の満足度によってスコアを変える
-        if (_customer._cute <= cute && _customer._cool <= cool && _customer._amuseing <= amuseing && _customer._sexy <= sexy && _customer._ghostly <= ghostly)
+        for (int i = 0; i < _customerControlle.Dresses.Length; i++)
         {
-            for(int i = 0; i < customer.Dresses.Length; i++)
-            {
-                customer.Dresses[i].SetActive(false);
-                customer.Shoes[i].SetActive(false);
-                customer.Accessories[i].SetActive(false);
-            }
-            _gameManager.AddScore(500);
-            customer.gameObject.SetActive(false);
-            customerGenerator.Generate();
+            _customerControlle.Dresses[i].SetActive(false);
+            _customerControlle.Shoes[i].SetActive(false);
+            _customerControlle.Accessories[i].SetActive(false);
+        }
+        //客の満足度によってスコアを変える
+        if (this._customer._cute <= cute && this._customer._cool <= cool && this._customer._amuseing <= amuseing && this._customer._sexy <= sexy && this._customer._ghostly <= ghostly)
+        {
+            _successEffect.Play();
+            _gameManager.AddScore(15000);
+            _customerControlle.gameObject.SetActive(false);
+            _customerGenerator.Generate();
             Debug.Log("大満足");
         }
-        else if (_customer._cute < cute)
+        else if (this._customer._cute < cute)
         {
-            _gameManager.AddScore(100);
-            customer.gameObject.SetActive(false);
-            customerGenerator.Generate();
+            _gameManager.AddScore(3000);
+            _customerControlle.gameObject.SetActive(false);
+            _customerGenerator.Generate();
             Debug.Log("満足");
         }
-        else if (_customer._cool < cool)
+        else if (this._customer._cool < cool)
         {
-            _gameManager.AddScore(100);
-            customer.gameObject.SetActive(false);
-            customerGenerator.Generate();
+            _gameManager.AddScore(3000);
+            _customerControlle.gameObject.SetActive(false);
+            _customerGenerator.Generate();
             Debug.Log("満足");
         }
-        else if (_customer._amuseing < amuseing)
+        else if (this._customer._amuseing < amuseing)
         {
-            _gameManager.AddScore(100);
-            customer.gameObject.SetActive(false);
-            customerGenerator.Generate();
+            _gameManager.AddScore(3000);
+            _customerControlle.gameObject.SetActive(false);
+            _customerGenerator.Generate();
             Debug.Log("満足");
         }
-        else if (_customer._sexy < sexy)
+        else if (this._customer._sexy < sexy)
         {
-            _gameManager.AddScore(100);
-            customer.gameObject.SetActive(false);
-            customerGenerator.Generate();
+            _gameManager.AddScore(3000);
+            _customerControlle.gameObject.SetActive(false);
+            _customerGenerator.Generate();
             Debug.Log("満足");
         }
-        else if (_customer._ghostly < ghostly)
+        else if (this._customer._ghostly < ghostly)
         {
-            _gameManager.AddScore(100);
-            customer.gameObject.SetActive(false);
-            customerGenerator.Generate();
+            _gameManager.AddScore(3000);
+            _customerControlle.gameObject.SetActive(false);
+            _customerGenerator.Generate();
             Debug.Log("満足");
         }
         else
         {
+            _failedEffect.Play();
             _gameManager.AddScore(10);
-            customer.gameObject.SetActive(false);
-            customerGenerator.Generate();
+            _customerControlle.gameObject.SetActive(false);
+            _customerGenerator.Generate();
             Debug.Log("不満");
         }
     }
