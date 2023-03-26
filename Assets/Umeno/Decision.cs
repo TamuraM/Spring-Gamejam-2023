@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Decision : InstanceSystem<Decision>
 {
-    //各
+    //各種パラメーターを格納する
     public class Parameter
     {
         public int _cute;
@@ -20,9 +21,9 @@ public class Decision : InstanceSystem<Decision>
         }
     }
 
-    [SerializeField] GameObject _redPanel;
-    [SerializeField] GameObject _bluePanel;
-    [SerializeField] GameObject _yellowPanel;
+    [SerializeField, Tooltip("服のオブジェクト配列")] GameObject _clothesPanel;
+    [SerializeField, Tooltip("靴のオブジェクト配列")] GameObject _shoesPanel;
+    [SerializeField, Tooltip("アクセサリーのオブジェクト配列")] GameObject _accessoryPanel;
     //服のパラメーターを格納する変数
     public Parameter _clothes = new Parameter(0, 0, 0, 0, 0);
     //靴のパラメーターを格納する変数
@@ -32,6 +33,8 @@ public class Decision : InstanceSystem<Decision>
     //客のパラメーターを格納する変数
     public Parameter _customer = new Parameter(0, 0, 0, 0, 0);
     GameManager _gameManager;
+    Button _decisionButton;
+
 
     //プロパティ化
     public Parameter Clothes { get => _clothes; set => _clothes = value; }
@@ -42,6 +45,14 @@ public class Decision : InstanceSystem<Decision>
     private void Start()
     {
         _gameManager = FindObjectOfType<GameManager>();
+        _decisionButton = GetComponent<Button>();
+    }
+    private void Update()
+    {
+        if(!_gameManager.IsGame)
+        {
+            _decisionButton.enabled = false;
+        }
     }
     public void DecisionButton()
     {
@@ -59,9 +70,9 @@ public class Decision : InstanceSystem<Decision>
         int ghostly = _clothes._ghostly + _shoes._ghostly + _accessory._ghostly;
         for(int i = 0; i < 5; i++)
         {
-            _redPanel.transform.GetChild(i).SetSiblingIndex(Random.Range(0, 6));
-            _bluePanel.transform.GetChild(i).SetSiblingIndex(Random.Range(0, 6));
-            _yellowPanel.transform.GetChild(i).SetSiblingIndex(Random.Range(0, 6));
+            _clothesPanel.transform.GetChild(i).SetSiblingIndex(Random.Range(0, 6));
+            _shoesPanel.transform.GetChild(i).SetSiblingIndex(Random.Range(0, 6));
+            _accessoryPanel.transform.GetChild(i).SetSiblingIndex(Random.Range(0, 6));
         }
         //客の満足度によってスコアを変える
         if (_customer._cute <= cute && _customer._cool <= cool && _customer._amuseing <= amuseing && _customer._sexy <= sexy && _customer._ghostly <= ghostly)
