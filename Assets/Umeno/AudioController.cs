@@ -1,18 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class AudioController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("‘I‘ð‰¹")]
+    [SerializeField] AudioClip[] _clips;
+    AudioSource _audio;
+    private void Start()
     {
-        
+        _audio = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SePlay(SelectAudio seName)
     {
-        
+        int index = (int)seName;
+        _audio.PlayOneShot(_clips[index]);
+    }
+
+    public enum SelectAudio
+    {
+        select,
     }
 }

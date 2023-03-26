@@ -2,38 +2,92 @@ using UnityEngine;
 
 public class Decision : InstanceSystem<Decision>
 {
+    //各
     public class Parameter
     {
-        public int cute;
-        public int cool;
-        public int amuseing;
-        public int sexy;
-        public int ghostly;
+        public int _cute;
+        public int _cool;
+        public int _amuseing;
+        public int _sexy;
+        public int _ghostly;
         public Parameter(int a, int b, int c, int d, int e)
         {
-            cute = a;
-            cool = b;
-            amuseing = c;
-            sexy = d;
-            ghostly = e;
-
+            _cute = a;
+            _cool = b;
+            _amuseing = c;
+            _sexy = d;
+            _ghostly = e;
         }
     }
 
+    //服のパラメーターを格納する変数
     Parameter _clothes = new Parameter(0, 0, 0, 0, 0);
+    //靴のパラメーターを格納する変数
     Parameter _shoes = new Parameter(0, 0, 0, 0, 0);
+    //アクセサリーのパラメーターを格納する変数
     Parameter _accessory = new Parameter(0, 0, 0, 0, 0);
-    //服の変数
+    //客のパラメーターを格納する変数
+    Parameter _customer = new Parameter(0, 0, 0, 0, 0);
+    GameManager _gameManager;
+    //プロパティ化
     public Parameter Clothes { get => _clothes; set => _clothes = value; }
-    //靴の変数
     public Parameter Shoes { get => _shoes; set => _shoes = value; }
-    //アクセサリーの変数
     public Parameter Accessory { get => _accessory; set => _accessory = value; }
-    void Start()
+    public Parameter Customer { get => _customer; set => _customer = value; }
+
+    private void Start()
     {
+        _gameManager = FindObjectOfType<GameManager>();
     }
-    void Update()
+    public void DecisionButton()
     {
-        
+        //CustomerController customer = FindObjectOfType<CustomerController>();
+        //服と靴とアクセサリーのcute値を合計
+        int cute = _clothes._cute + _shoes._cute + _accessory._cute;
+        //服と靴とアクセサリーのcool値を合計
+        int cool = _clothes._cool + _shoes._cool + _accessory._cool;
+        //服と靴とアクセサリーのamuseing値を合計
+        int amuseing = _clothes._amuseing + _shoes._amuseing + _accessory._amuseing;
+        //服と靴とアクセサリーのsexy値を合計
+        int sexy = _clothes._sexy + _shoes._sexy + _accessory._sexy;
+        //服と靴とアクセサリーのghostly値を合計
+        int ghostly = _clothes._ghostly + _shoes._ghostly + _accessory._ghostly;
+
+        //客の満足度によってスコアを変える
+        if (_customer._cute <= cute && _customer._cool <= cool && _customer._amuseing <= amuseing && _customer._sexy <= sexy && _customer._ghostly <= ghostly)
+        {
+            _gameManager.AddScore(500);
+            Debug.Log("大満足");
+        }
+        else if (_customer._cute < cute)
+        {
+            _gameManager.AddScore(100);
+            Debug.Log("満足");
+        }
+        else if (_customer._cool < cool)
+        {
+            _gameManager.AddScore(100);
+            Debug.Log("満足");
+        }
+        else if (_customer._amuseing < amuseing)
+        {
+            _gameManager.AddScore(100);
+            Debug.Log("満足");
+        }
+        else if (_customer._sexy < sexy)
+        {
+            _gameManager.AddScore(100);
+            Debug.Log("満足");
+        }
+        else if (_customer._ghostly < ghostly)
+        {
+            _gameManager.AddScore(100);
+            Debug.Log("満足");
+        }
+        else
+        {
+            _gameManager.AddScore(10);
+            Debug.Log("不満");
+        }
     }
 }
