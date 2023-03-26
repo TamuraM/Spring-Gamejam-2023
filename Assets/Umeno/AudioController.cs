@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class AudioController : MonoBehaviour
 {
-    [Header("‘I‘ð‰¹")]
+    [Header("0:‘I‘ð‰¹")]
     [SerializeField] AudioClip[] _clips;
     AudioSource _audio;
     private void Start()
