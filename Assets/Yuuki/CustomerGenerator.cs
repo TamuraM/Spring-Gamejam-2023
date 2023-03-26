@@ -42,10 +42,27 @@ public class CustomerGenerator : MonoBehaviour
     private NextOrder DecideOrder()
     {
         int orderIndex = UnityEngine.Random.Range(0, 4);
+        //ランダムにオーダーを生成するために、Enumをintに変換
         NextOrder next = (NextOrder)Enum.ToObject(typeof(NextOrder), orderIndex);
         return next;
     }
-    
+
+    /// <summary> オーダーに合わせて、スコアのボーダーを設定する </summary>
+    /// <param name="nextOrder"></param>
+    private void SetParameter(NextOrder nextOrder)
+    {
+        switch (nextOrder)
+        {
+            case NextOrder.Cute: Decision.Instance.Customer._cute = _orderBorder; break;
+            case NextOrder.Cool: Decision.Instance.Customer._cool = _orderBorder; break;
+            case NextOrder.Amusing: Decision.Instance.Customer._amuseing = _orderBorder; break;
+            case NextOrder.Sexy: Decision.Instance.Customer._sexy = _orderBorder; break;
+            case NextOrder.Ghostly: Decision.Instance.Customer._ghostly = _orderBorder; break;
+            default: break;
+        }
+
+    }
+
     /// <summary> 客のプレハブを決定する </summary>
     private GameObject DecideCusttomer()
     {
