@@ -16,13 +16,15 @@ public class GameManager : MonoBehaviour
     /// <summary>今のスコア</summary>
     public ReactiveProperty<int> Score { get => _score; }
 
-    [Tooltip("ゲーム中かのフラグ")] private bool _isGame = false;
+    [SerializeField, Tooltip("ゲーム中かのフラグ")] private bool _isGame = false;
     /// <summary>ゲーム中かのフラグ</summary>
     public bool IsGame { get => _isGame; set => _isGame = value; }
 
     void Start()
     {
         _score.Value = 0;
+        //カウントダウンしてisGameをオンにする
+        _isGame = true;
     }
 
     void Update()
@@ -33,6 +35,13 @@ public class GameManager : MonoBehaviour
         {
             //時間減らしてる
             _limitTime.Value -= Time.deltaTime;
+
+            //制限時間経ったらフラグを変える
+            if(_limitTime.Value < 0)
+            {
+                _isGame = false;
+            }
+
         }
 
     }
