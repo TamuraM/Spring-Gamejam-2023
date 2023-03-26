@@ -12,7 +12,7 @@ public class CustomerGenerator : MonoBehaviour
     [SerializeField, Tooltip("オーダーのセリフテキスト")] Text _orderText = default;
     [Header("オーダーのセリフ内容")]
     [SerializeField] String[] diaLogues = new string[Enum.GetNames(typeof(NextOrder)).Length];
-    [SerializeField, Tooltip("女性の割合(整数％)")] int _womenRatio = default;
+    [SerializeField, Tooltip("女性の割合(％)")] float _womenRatio = default;
 
     /// <summary> 次の客を生成する。Decisionから呼ばれる </summary>
     public void Generate()
@@ -47,9 +47,15 @@ public class CustomerGenerator : MonoBehaviour
 
         SexyAndGhostly = 15,
 
+        Chara1 = 16,
+        Chara2 = 17,
+        Chara3 = 18,
+        Chara4 = 19,
+        Chara5 = 20,
+        Chara6 = 21,
     }
     NextOrder _order = NextOrder.Uncertainty;
-    
+
     /// <summary> 次のオーダーを決定する </summary>
     /// <returns></returns>
     private NextOrder DecideOrder()
@@ -74,7 +80,7 @@ public class CustomerGenerator : MonoBehaviour
             case NextOrder.Ghostly: Decision.Instance.Customer._ghostly = _orderBorder; break;
 
             case NextOrder.CuteAndCool: Decision.Instance.Customer._cute = _orderBorder; Decision.Instance.Customer._cool = _orderBorder; break;
-            case NextOrder.CuteAndAmusing:Decision.Instance.Customer._cute = _orderBorder; Decision.Instance.Customer._amuseing = _orderBorder; break;
+            case NextOrder.CuteAndAmusing: Decision.Instance.Customer._cute = _orderBorder; Decision.Instance.Customer._amuseing = _orderBorder; break;
             case NextOrder.CuteAndSexy: Decision.Instance.Customer._cute = _orderBorder; Decision.Instance.Customer._sexy = _orderBorder; break;
             case NextOrder.CuteAndGhostly: Decision.Instance.Customer._cute = _orderBorder; Decision.Instance.Customer._ghostly = _orderBorder; break;
 
@@ -82,11 +88,17 @@ public class CustomerGenerator : MonoBehaviour
             case NextOrder.CoolAndSexy: Decision.Instance.Customer._cool = _orderBorder; Decision.Instance.Customer._sexy = _orderBorder; break;
             case NextOrder.CoolAndGhostly: Decision.Instance.Customer._cool = _orderBorder; Decision.Instance.Customer._ghostly = _orderBorder; break;
 
-            case NextOrder.AmusingAndSexy: Decision.Instance.Customer._amuseing = _orderBorder; Decision.Instance.Customer._sexy= _orderBorder; break;
+            case NextOrder.AmusingAndSexy: Decision.Instance.Customer._amuseing = _orderBorder; Decision.Instance.Customer._sexy = _orderBorder; break;
             case NextOrder.AmusingAndGhostly: Decision.Instance.Customer._amuseing = _orderBorder; Decision.Instance.Customer._ghostly = _orderBorder; break;
 
             case NextOrder.SexyAndGhostly: Decision.Instance.Customer._sexy = _orderBorder; Decision.Instance.Customer._ghostly = _orderBorder; break;
 
+            case NextOrder.Chara1: /*Chara1のキャラ設定に合わせてパラメーターを変える*/; break;
+            case NextOrder.Chara2: /*Chara2のキャラ設定に合わせてパラメーターを変える*/; break;
+            case NextOrder.Chara3: /*Chara3のキャラ設定に合わせてパラメーターを変える*/; break;
+            case NextOrder.Chara4: /*Chara4のキャラ設定に合わせてパラメーターを変える*/; break;
+            case NextOrder.Chara5: /*Chara5のキャラ設定に合わせてパラメーターを変える*/; break;
+            case NextOrder.Chara6: /*Chara6のキャラ設定に合わせてパラメーターを変える*/; break;
 
             default: break;
         }
@@ -95,17 +107,31 @@ public class CustomerGenerator : MonoBehaviour
     /// <summary> 客のプレハブを決定する </summary>
     private GameObject DecideCusttomer()
     {
-        int lot = UnityEngine.Random.Range(0, 100);
-        int customerIndex = default;
-        if (lot < _womenRatio)
+        switch (_order)
         {
-            customerIndex = UnityEngine.Random.Range(0, 3);
+            //「好み」で注文されたときは、キャラが確定している
+            case NextOrder.Chara1: return customers[0];
+            case NextOrder.Chara2: return customers[1];
+            case NextOrder.Chara3: return customers[2];
+            case NextOrder.Chara4: return customers[3];
+            case NextOrder.Chara5: return customers[4];
+            case NextOrder.Chara6: return customers[5];
+
+            default:
+                //「好み」以外で注文されたときは、キャラはランダムに決まる
+                float lot = UnityEngine.Random.Range(0, 100);
+                int customerIndex = default;
+                float tempRatio = (7.0f / 5.0f) * _womenRatio - 4.0f;
+                if (lot < tempRatio)
+                {
+                    customerIndex = UnityEngine.Random.Range(0, 3);
+                }
+                else
+                {
+                    customerIndex = UnityEngine.Random.Range(4, 6);
+                }
+                return customers[customerIndex];
         }
-        else
-        {
-            customerIndex = UnityEngine.Random.Range(4, 6);
-        }
-        return customers[customerIndex];
     }
 
     /// <summary> オーダーに合わせてセリフを決定する </summary>
@@ -113,7 +139,7 @@ public class CustomerGenerator : MonoBehaviour
     /// <returns></returns>
     private string Dialogue(NextOrder nextOrder)
     {
-        switch(nextOrder)
+        switch (nextOrder)
         {
             case NextOrder.Cute: return diaLogues[0];
             case NextOrder.Cool: return diaLogues[1];
@@ -121,7 +147,7 @@ public class CustomerGenerator : MonoBehaviour
             case NextOrder.Sexy: return diaLogues[3];
             case NextOrder.Ghostly: return diaLogues[4];
 
-            case NextOrder.CuteAndCool:return diaLogues[5];
+            case NextOrder.CuteAndCool: return diaLogues[5];
             case NextOrder.CuteAndAmusing: return diaLogues[6];
             case NextOrder.CuteAndSexy: return diaLogues[7];
             case NextOrder.CuteAndGhostly: return diaLogues[8];
@@ -135,7 +161,7 @@ public class CustomerGenerator : MonoBehaviour
 
             case NextOrder.SexyAndGhostly: return diaLogues[14];
 
-            default: return "";
+            default: return diaLogues[15];
         }
     }
 }
