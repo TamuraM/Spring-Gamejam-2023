@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
@@ -11,15 +11,15 @@ public class Result : MonoBehaviour
     {
         public int _score;
     }
-    [SerializeField, Tooltip("‰ß‹‚ÌƒnƒCƒXƒRƒA‚ğ•\¦")] Text _hightScoreText;
-    [SerializeField, Tooltip("¡‰ñ‚ÌƒXƒRƒA‚ğ•\¦")] Text _scoreText;
-    [SerializeField, Tooltip("¡‰ñ‚Ìƒ‰ƒ“ƒN‚ğ•\¦")] Text _rank;
-    [SerializeField, Tooltip("ƒ‰ƒ“ƒN‚É‰‚¶‚½Ì†")] Text _comment;
-    [Header("Šeƒ‰ƒ“ƒN‚ÌÌ†")]
-    [SerializeField, Tooltip("Sƒ‰ƒ“ƒN‚ÌÌ†")] string _rankS;
-    [SerializeField, Tooltip("Aƒ‰ƒ“ƒN‚ÌÌ†")] string _rankA;
-    [SerializeField, Tooltip("Bƒ‰ƒ“ƒN‚ÌÌ†")] string _rankB;
-    [SerializeField, Tooltip("Cƒ‰ƒ“ƒN‚ÌÌ†")] string _rankC;
+    [SerializeField, Tooltip("éå»ã®ãƒã‚¤ã‚¹ã‚³ã‚¢ã‚’è¡¨ç¤º")] Text _hightScoreText;
+    [SerializeField, Tooltip("ä»Šå›ã®ã‚¹ã‚³ã‚¢ã‚’è¡¨ç¤º")] Text _scoreText;
+    [SerializeField, Tooltip("ä»Šå›ã®ãƒ©ãƒ³ã‚¯ã‚’è¡¨ç¤º")] Text _rank;
+    [SerializeField, Tooltip("ãƒ©ãƒ³ã‚¯ã«å¿œã˜ãŸç§°å·")] Text _comment;
+    [Header("å„ãƒ©ãƒ³ã‚¯ã®ç§°å·")]
+    [SerializeField, Tooltip("Sãƒ©ãƒ³ã‚¯ã®ç§°å·")] string _rankS;
+    [SerializeField, Tooltip("Aãƒ©ãƒ³ã‚¯ã®ç§°å·")] string _rankA;
+    [SerializeField, Tooltip("Bãƒ©ãƒ³ã‚¯ã®ç§°å·")] string _rankB;
+    [SerializeField, Tooltip("Cãƒ©ãƒ³ã‚¯ã®ç§°å·")] string _rankC;
     Score _hightScore = new Score();
     GameManager _gameManager;
 

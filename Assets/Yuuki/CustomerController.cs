@@ -1,14 +1,36 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary> �q�̃N���X�B���̔z��������Ă��� </summary>
+/// <summary> 客のクラス。服の配列を持っている </summary>
 public class CustomerController : MonoBehaviour
 {
-    [SerializeField, Header("�����s�[�X")] GameObject[] dresses = new GameObject[5];
-    [SerializeField, Header("�C")] GameObject[] shoes = new GameObject[5];
-    [SerializeField, Header("�A�N�Z�T���[")] GameObject[] accessories= new GameObject[5];
+    [SerializeField, Header("ワンピース")] GameObject[] dresses = new GameObject[5];
+    [SerializeField, Header("靴")] GameObject[] shoes = new GameObject[5];
+    [SerializeField, Header("アクセサリー")] GameObject[] accessories= new GameObject[5];
+    [Header("客毎のSE")]
+    [SerializeField, Tooltip("大満足時のSE")] SelectAudio _verryGoodAudio;
+    [SerializeField, Tooltip("満足時のSE")] SelectAudio _goodAudio;
+    [SerializeField, Tooltip("不満時のSE")] SelectAudio _missAudio;
     public GameObject[] Dresses { get => dresses; }
     public GameObject[] Shoes { get => shoes; }
     public GameObject[] Accessories { get => accessories; }
+
+    //大満足時のSEを再生
+    public void VerryGoodPlay()
+    {
+        AudioController.Instance.SePlay(_verryGoodAudio);
+    }
+
+    //満足時のSEを再生
+    public void GoodPlay()
+    {
+        AudioController.Instance.SePlay(_goodAudio);
+    }
+
+    //不満時のSEを再生
+    public void MissPlay()
+    {
+        AudioController.Instance.SePlay(_missAudio);
+    }
 }

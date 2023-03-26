@@ -1,9 +1,9 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class AudioController : MonoBehaviour
+public class AudioController : InstanceSystem<AudioController>
 {
-    [Header("0:ëIëâπ")]
+    [Header("0:ÈÅ∏ÊäûÈü≥")]
     [SerializeField] AudioClip[] _clips;
     AudioSource _audio;
     private void Start()
@@ -16,9 +16,17 @@ public class AudioController : MonoBehaviour
         int index = (int)seName;
         _audio.PlayOneShot(_clips[index]);
     }
+}
 
-    public enum SelectAudio
-    {
-        select,
-    }
+public enum SelectAudio
+{
+    Select,
+    VerryGoodWoman,
+    GoodWoman,
+    MissWoman,
+    VerryGoodMan,
+    GoodMan,
+    MiaaMan,
+    SheetChange,
+    Shutter,
 }

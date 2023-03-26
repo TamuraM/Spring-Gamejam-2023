@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,19 +6,19 @@ public class InstanceSystem<T> : MonoBehaviour where T : MonoBehaviour
 {
 	private static T _instance;
 
-	//Œp³æ‚ÌƒNƒ‰ƒX‚ªƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚éƒIƒuƒWƒFƒNƒg‚ğŠi”[‚·‚é
+	//ç¶™æ‰¿å…ˆã®ã‚¯ãƒ©ã‚¹ãŒã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ ¼ç´ã™ã‚‹
 	public static T Instance
 	{
 		get
 		{
-			//_instance‚É‚È‚è‚àŠi”[‚³‚ê‚Ä‚È‚¯‚ê‚ÎƒV[ƒ“ã‚ÌTƒNƒ‰ƒX‚ğ‚Á‚Ä‚¢‚éƒIƒuƒWƒFƒNƒg‚ğŠi”[‚·‚é
+			//_instanceã«ãªã‚Šã‚‚æ ¼ç´ã•ã‚Œã¦ãªã‘ã‚Œã°ã‚·ãƒ¼ãƒ³ä¸Šã®Tã‚¯ãƒ©ã‚¹ã‚’æŒã£ã¦ã„ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ ¼ç´ã™ã‚‹
 			if (_instance == null)
 			{
 				_instance = FindObjectOfType<T>();
-				//‚»‚ê‚Å‚àŠi”[‚³‚ê‚Ä‚È‚¯‚ê‚ÎƒGƒ‰[•¶‚ğ•Ô‚·
+				//ãã‚Œã§ã‚‚æ ¼ç´ã•ã‚Œã¦ãªã‘ã‚Œã°ã‚¨ãƒ©ãƒ¼æ–‡ã‚’è¿”ã™
 				if (_instance == null)
 				{
-					Debug.Log("’Ç‰Á‚³‚ê‚Ä‚¢‚éGameObject‚ª‘¶İ‚µ‚Ü‚¹‚ñB");
+					Debug.Log("è¿½åŠ ã•ã‚Œã¦ã„ã‚‹GameObjectãŒå­˜åœ¨ã—ã¾ã›ã‚“ã€‚");
 				}
 			}
 

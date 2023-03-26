@@ -1,9 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 
 public class Decision : InstanceSystem<Decision>
 {
-    //Šeíƒpƒ‰ƒ[ƒ^[‚ğŠi”[‚·‚é
+    //å„ç¨®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã‚’æ ¼ç´ã™ã‚‹
     public class Parameter
     {
         public int _cute;
@@ -21,18 +21,18 @@ public class Decision : InstanceSystem<Decision>
         }
     }
 
-    [SerializeField, Tooltip("•‚ÌƒIƒuƒWƒFƒNƒg”z—ñ")] GameObject _clothesPanel;
-    [SerializeField, Tooltip("ŒC‚ÌƒIƒuƒWƒFƒNƒg”z—ñ")] GameObject _shoesPanel;
-    [SerializeField, Tooltip("ƒAƒNƒZƒTƒŠ[‚ÌƒIƒuƒWƒFƒNƒg”z—ñ")] GameObject _accessoryPanel;
+    [SerializeField, Tooltip("æœã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆé…åˆ—")] GameObject _clothesPanel;
+    [SerializeField, Tooltip("é´ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆé…åˆ—")] GameObject _shoesPanel;
+    [SerializeField, Tooltip("ã‚¢ã‚¯ã‚»ã‚µãƒªãƒ¼ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆé…åˆ—")] GameObject _accessoryPanel;
     [SerializeField] ParticleSystem _successEffect;
     [SerializeField] ParticleSystem _failedEffect;
-    //•‚Ìƒpƒ‰ƒ[ƒ^[‚ğŠi”[‚·‚é•Ï”
+    //æœã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã‚’æ ¼ç´ã™ã‚‹å¤‰æ•°
     public Parameter _clothes = new Parameter(0, 0, 0, 0, 0);
-    //ŒC‚Ìƒpƒ‰ƒ[ƒ^[‚ğŠi”[‚·‚é•Ï”
+    //é´ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã‚’æ ¼ç´ã™ã‚‹å¤‰æ•°
     public Parameter _shoes = new Parameter(0, 0, 0, 0, 0);
-    //ƒAƒNƒZƒTƒŠ[‚Ìƒpƒ‰ƒ[ƒ^[‚ğŠi”[‚·‚é•Ï”
+    //ã‚¢ã‚¯ã‚»ã‚µãƒªãƒ¼ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã‚’æ ¼ç´ã™ã‚‹å¤‰æ•°
     public Parameter _accessory = new Parameter(0, 0, 0, 0, 0);
-    //‹q‚Ìƒpƒ‰ƒ[ƒ^[‚ğŠi”[‚·‚é•Ï”
+    //å®¢ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã‚’æ ¼ç´ã™ã‚‹å¤‰æ•°
     public Parameter _customer = new Parameter(3, 3, 3, 3, 3);
     GameManager _gameManager;
     Button _decisionButton;
@@ -41,7 +41,7 @@ public class Decision : InstanceSystem<Decision>
 
 
 
-    //ƒvƒƒpƒeƒB‰»
+    //ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åŒ–
     public Parameter Clothes { get => _clothes; set => _clothes = value; }
     public Parameter Shoes { get => _shoes; set => _shoes = value; }
     public Parameter Accessory { get => _accessory; set => _accessory = value; }
@@ -65,15 +65,15 @@ public class Decision : InstanceSystem<Decision>
     {
         _customerControlle = FindObjectOfType<CustomerController>();
         _customerGenerator = FindObjectOfType<CustomerGenerator>();
-        //•‚ÆŒC‚ÆƒAƒNƒZƒTƒŠ[‚Ìcute’l‚ğ‡Œv
+        //æœã¨é´ã¨ã‚¢ã‚¯ã‚»ã‚µãƒªãƒ¼ã®cuteå€¤ã‚’åˆè¨ˆ
         int cute = _clothes._cute + _shoes._cute + _accessory._cute;
-        //•‚ÆŒC‚ÆƒAƒNƒZƒTƒŠ[‚Ìcool’l‚ğ‡Œv
+        //æœã¨é´ã¨ã‚¢ã‚¯ã‚»ã‚µãƒªãƒ¼ã®coolå€¤ã‚’åˆè¨ˆ
         int cool = _clothes._cool + _shoes._cool + _accessory._cool;
-        //•‚ÆŒC‚ÆƒAƒNƒZƒTƒŠ[‚Ìamuseing’l‚ğ‡Œv
+        //æœã¨é´ã¨ã‚¢ã‚¯ã‚»ã‚µãƒªãƒ¼ã®amuseingå€¤ã‚’åˆè¨ˆ
         int amuseing = _clothes._amuseing + _shoes._amuseing + _accessory._amuseing;
-        //•‚ÆŒC‚ÆƒAƒNƒZƒTƒŠ[‚Ìsexy’l‚ğ‡Œv
+        //æœã¨é´ã¨ã‚¢ã‚¯ã‚»ã‚µãƒªãƒ¼ã®sexyå€¤ã‚’åˆè¨ˆ
         int sexy = _clothes._sexy + _shoes._sexy + _accessory._sexy;
-        //•‚ÆŒC‚ÆƒAƒNƒZƒTƒŠ[‚Ìghostly’l‚ğ‡Œv
+        //æœã¨é´ã¨ã‚¢ã‚¯ã‚»ã‚µãƒªãƒ¼ã®ghostlyå€¤ã‚’åˆè¨ˆ
         int ghostly = _clothes._ghostly + _shoes._ghostly + _accessory._ghostly;
         this._clothes = new Parameter(0, 0, 0, 0, 0);
         this._shoes = new Parameter(0, 0, 0, 0, 0);
@@ -90,57 +90,64 @@ public class Decision : InstanceSystem<Decision>
             _customerControlle.Shoes[i].SetActive(false);
             _customerControlle.Accessories[i].SetActive(false);
         }
-        //‹q‚Ì–‘«“x‚É‚æ‚Á‚ÄƒXƒRƒA‚ğ•Ï‚¦‚é
+        //å®¢ã®æº€è¶³åº¦ã«ã‚ˆã£ã¦ã‚¹ã‚³ã‚¢ã‚’å¤‰ãˆã‚‹
         if (this._customer._cute <= cute && this._customer._cool <= cool && this._customer._amuseing <= amuseing && this._customer._sexy <= sexy && this._customer._ghostly <= ghostly)
         {
             _successEffect.Play();
             _gameManager.AddScore(15000);
+            _customerControlle.VerryGoodPlay();
             _customerControlle.gameObject.SetActive(false);
             _customerGenerator.Generate();
-            Debug.Log("‘å–‘«");
+            Debug.Log("å¤§æº€è¶³");
         }
         else if (this._customer._cute < cute)
         {
             _gameManager.AddScore(3000);
+            _customerControlle.GoodPlay();
             _customerControlle.gameObject.SetActive(false);
             _customerGenerator.Generate();
-            Debug.Log("–‘«");
+            Debug.Log("æº€è¶³");
         }
         else if (this._customer._cool < cool)
         {
             _gameManager.AddScore(3000);
+            _customerControlle.GoodPlay();
             _customerControlle.gameObject.SetActive(false);
             _customerGenerator.Generate();
-            Debug.Log("–‘«");
+            Debug.Log("æº€è¶³");
         }
         else if (this._customer._amuseing < amuseing)
         {
             _gameManager.AddScore(3000);
+            _customerControlle.GoodPlay();
             _customerControlle.gameObject.SetActive(false);
             _customerGenerator.Generate();
-            Debug.Log("–‘«");
+            Debug.Log("æº€è¶³");
         }
         else if (this._customer._sexy < sexy)
         {
             _gameManager.AddScore(3000);
+            _customerControlle.GoodPlay();
             _customerControlle.gameObject.SetActive(false);
             _customerGenerator.Generate();
-            Debug.Log("–‘«");
+            Debug.Log("æº€è¶³");
         }
         else if (this._customer._ghostly < ghostly)
         {
             _gameManager.AddScore(3000);
+            _customerControlle.GoodPlay();
             _customerControlle.gameObject.SetActive(false);
             _customerGenerator.Generate();
-            Debug.Log("–‘«");
+            Debug.Log("æº€è¶³");
         }
         else
         {
             _failedEffect.Play();
             _gameManager.AddScore(10);
+            _customerControlle.MissPlay();
             _customerControlle.gameObject.SetActive(false);
             _customerGenerator.Generate();
-            Debug.Log("•s–");
+            Debug.Log("ä¸æº€");
         }
     }
 }

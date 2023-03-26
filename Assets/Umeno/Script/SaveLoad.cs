@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
@@ -7,7 +7,7 @@ using System;
 public static class SaveLoad
 {
     /// <summary>
-    /// ˆø”‚É”’l‚ğ“n‚µJsonŒ`®‚Å•Û‘¶‚·‚é
+    /// å¼•æ•°ã«æ•°å€¤ã‚’æ¸¡ã—Jsonå½¢å¼ã§ä¿å­˜ã™ã‚‹
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="data"></param>
@@ -22,7 +22,7 @@ public static class SaveLoad
         }
     }
     /// <summary>
-    /// ‘ã“ü‚µ‚½‚¢•Ï”‚ğˆø”‚Éİ’è‚·‚é‚±‚Æ‚Å“¯‚¶Œ^‚ÅJsonƒtƒ@ƒCƒ‹‚ ‚ç”’l‚ğ‘ã“ü‚·‚é
+    /// ä»£å…¥ã—ãŸã„å¤‰æ•°ã‚’å¼•æ•°ã«è¨­å®šã™ã‚‹ã“ã¨ã§åŒã˜å‹ã§Jsonãƒ•ã‚¡ã‚¤ãƒ«ã‚ã‚‰æ•°å€¤ã‚’ä»£å…¥ã™ã‚‹
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="data"></param>
@@ -41,7 +41,7 @@ public static class SaveLoad
         }
         catch
         {
-            Debug.LogWarning("ƒf[ƒ^‚ª‚ ‚è‚Ü‚¹‚ñB");
+            Debug.LogWarning("ãƒ‡ãƒ¼ã‚¿ãŒã‚ã‚Šã¾ã›ã‚“ã€‚");
             return data;
         }
     }
