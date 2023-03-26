@@ -7,22 +7,22 @@ using UniRx;
 public class GameManager : MonoBehaviour
 {
     [Header("時間関係")]
-    [SerializeField, Tooltip("制限時間(秒)")] private ReactiveProperty<float> _limitTime = new ReactiveProperty<float>();
+    [SerializeField, Tooltip("制限時間(秒)")] private ReactiveProperty<int> _limitTime = new ReactiveProperty<int>();
     /// <summary>制限時間(秒)</summary>
-    public ReactiveProperty<float> LimitTime { get => _limitTime; }
+    public ReactiveProperty<int> LimitTime { get => _limitTime; }
+    private float _second = 1;
 
     [Header("スコア関係")]
-    [SerializeField, Tooltip("今のスコア")] private ReactiveProperty<int> _score = new ReactiveProperty<int>();
+    [SerializeField, Tooltip("今のスコア")] private ReactiveProperty<int> _score = new ReactiveProperty<int>(0);
     /// <summary>今のスコア</summary>
     public ReactiveProperty<int> Score { get => _score; }
 
     [SerializeField, Tooltip("ゲーム中かのフラグ")] private bool _isGame = false;
     /// <summary>ゲーム中かのフラグ</summary>
-    public bool IsGame { get => _isGame; set => _isGame = value; }
+    public bool IsGame { get => _isGame; }
 
     void Start()
     {
-        _score.Value = 0;
         //カウントダウンしてisGameをオンにする
         _isGame = true;
     }
@@ -34,9 +34,17 @@ public class GameManager : MonoBehaviour
         if(_isGame)
         {
             //時間減らしてる
-            _limitTime.Value -= Time.deltaTime;
+            _second -= Time.deltaTime;
+
+            if(_second < 0)
+            {
+                _limitTime.Value--;
+                _second = 1;
+            }
+            
 
             //制限時間経ったらフラグを変える
+            //リザルト流す
             if(_limitTime.Value < 0)
             {
                 _isGame = false;

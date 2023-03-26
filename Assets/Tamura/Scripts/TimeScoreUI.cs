@@ -13,12 +13,16 @@ public class TimeScoreUI : MonoBehaviour
     [Header("UI関係")]
     [SerializeField, Tooltip("制限時間を表示するText")] private Text _timeText = default;
     [SerializeField, Tooltip("スコアを表示するText")] private Text _scoreText = default;
+    [Tooltip("前回のスコア")] private int _oldScore = default;
+    [SerializeField, Tooltip("スコアプラス表示")] private Text _plusScoreText = default;
 
     void Start()
     {
         //数値が変更されたら、テキストも変更する
         _gameManager.LimitTime.Subscribe(time => ChangeTimeText(time));
         _gameManager.Score.Subscribe(score => ChangeScoreText(score));
+        _oldScore = 0;
+        _plusScoreText.enabled = false;
     }
 
     void Update()
@@ -34,21 +38,22 @@ public class TimeScoreUI : MonoBehaviour
         //残り時間によってかわったりする
         if(time < 0)
         {
-            _timeText.text = "00";
+            _timeText.text = "0";
             return;
         }
 
-        _timeText.text = time.ToString("00");
+        _timeText.text = time.ToString();
 
-        if (time < 10) //10秒以下になったら赤く点滅しだす
+        if (time <= 10) //10秒以下になったら赤く点滅しだす
         {
-            _timeText.DOColor(Color.red, 0.3f).SetEase(Ease.Linear).SetLoops(1, LoopType.Yoyo).SetAutoKill();
-            //フォントサイズも変えたい
+            //赤く点滅
+            _timeText.DOColor(Color.red, 0.3f).SetEase(Ease.Linear).SetLoops(2, LoopType.Yoyo).SetAutoKill();
+            //フォントサイズが大きくなって小さくなる
             DOTween.To(() => _timeText.fontSize, //フォントサイズを
                 x => _timeText.fontSize = x, //xの値まで変更する
                 40, //xの値は40まで変化する
                 0.3f)
-                .SetEase(Ease.Linear).SetLoops(1, LoopType.Yoyo).SetAutoKill(); //0.3秒かけて変化する
+                .SetEase(Ease.Linear).SetLoops(2, LoopType.Yoyo).SetAutoKill(); //0.3秒かけて変化する
         }
         
     }
@@ -57,7 +62,21 @@ public class TimeScoreUI : MonoBehaviour
     /// <param name="score"></param>
     private void ChangeScoreText(int score)
     {
-        _scoreText.text = score.ToString("D7");
+        int tempScore = _oldScore;
+        _oldScore = score;
+        //スコア表示
+        DOTween.To(() => tempScore, //スコアテキストを
+                x => _scoreText.text = x.ToString("D7"), //xの値まで変更する
+                score, //xはscoreまで変化する
+                0.7f ) //0.3秒かけて変化する
+                .SetEase(Ease.Linear)
+                .OnComplete(() => _scoreText.text = score.ToString("D7")).SetAutoKill();
+        //何点増えたか表示
+        _plusScoreText.text = $"+{score - tempScore}";
+        _plusScoreText.enabled = true;
+        _plusScoreText.DOFade(0.3f, 0.7f).SetEase(Ease.Linear)
+            .OnComplete(() => { _plusScoreText.enabled = false; _plusScoreText.color = Color.white; })
+            .SetAutoKill();
     }
 
 }
