@@ -41,7 +41,8 @@ public class Decision : InstanceSystem<Decision>
     }
     public void DecisionButton()
     {
-        //CustomerController customer = FindObjectOfType<CustomerController>();
+        CustomerController customer = FindObjectOfType<CustomerController>();
+        CustomerGenerator customerGenerator = FindObjectOfType<CustomerGenerator>();
         //服と靴とアクセサリーのcute値を合計
         int cute = _clothes._cute + _shoes._cute + _accessory._cute;
         //服と靴とアクセサリーのcool値を合計
@@ -57,36 +58,50 @@ public class Decision : InstanceSystem<Decision>
         if (_customer._cute <= cute && _customer._cool <= cool && _customer._amuseing <= amuseing && _customer._sexy <= sexy && _customer._ghostly <= ghostly)
         {
             _gameManager.AddScore(500);
+            Destroy(customer.gameObject, 1f);
+            customerGenerator.Generate();
             Debug.Log("大満足");
         }
         else if (_customer._cute < cute)
         {
             _gameManager.AddScore(100);
+            Destroy(customer.gameObject, 1f);
+            customerGenerator.Generate();
             Debug.Log("満足");
         }
         else if (_customer._cool < cool)
         {
             _gameManager.AddScore(100);
+            Destroy(customer.gameObject, 1f);
+            customerGenerator.Generate();
             Debug.Log("満足");
         }
         else if (_customer._amuseing < amuseing)
         {
             _gameManager.AddScore(100);
+            Destroy(customer.gameObject, 1f);
+            customerGenerator.Generate();
             Debug.Log("満足");
         }
         else if (_customer._sexy < sexy)
         {
             _gameManager.AddScore(100);
+            Destroy(customer.gameObject, 1f);
+            customerGenerator.Generate();
             Debug.Log("満足");
         }
         else if (_customer._ghostly < ghostly)
         {
             _gameManager.AddScore(100);
+            Destroy(customer.gameObject, 1f);
+            customerGenerator.Generate();
             Debug.Log("満足");
         }
         else
         {
             _gameManager.AddScore(10);
+            Destroy(customer.gameObject, 1f);
+            customerGenerator.Generate();
             Debug.Log("不満");
         }
     }

@@ -8,5 +8,7 @@ public class CustomerController : MonoBehaviour
     [SerializeField, Header("ワンピース")] GameObject[] dresses = new GameObject[5];
     [SerializeField, Header("靴")] GameObject[] shoes = new GameObject[5];
     [SerializeField, Header("アクセサリー")] GameObject[] accessories= new GameObject[5];
-
+    public GameObject[] Dresses { get => dresses; }
+    public GameObject[] Shoes { get => shoes; }
+    public GameObject[] Accessories { get => accessories; }
 }
