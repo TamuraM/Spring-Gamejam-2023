@@ -31,7 +31,7 @@ public class Decision : InstanceSystem<Decision>
     //アクセサリーのパラメーターを格納する変数
     public Parameter _accessory = new Parameter(0, 0, 0, 0, 0);
     //客のパラメーターを格納する変数
-    public Parameter _customer = new Parameter(0, 0, 0, 0, 0);
+    public Parameter _customer = new Parameter(3, 3, 3, 3, 3);
     GameManager _gameManager;
     Button _decisionButton;
 

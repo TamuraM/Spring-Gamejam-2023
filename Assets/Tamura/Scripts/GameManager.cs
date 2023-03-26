@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
+using UnityEngine.UI; 
 
 /// <summary>ゲームの制限時間とスコアを管理します</summary>
 public class GameManager : MonoBehaviour
@@ -20,7 +21,9 @@ public class GameManager : MonoBehaviour
     [SerializeField, Tooltip("ゲーム中かのフラグ")] private bool _isGame = false;
     /// <summary>ゲーム中かのフラグ</summary>
     public bool IsGame { get => _isGame; }
-
+    [SerializeField] Image _timerGauge;
+    [SerializeField] GameObject _result;
+    float _timer;
     void Start()
     {
         //カウントダウンしてisGameをオンにする
@@ -35,7 +38,12 @@ public class GameManager : MonoBehaviour
         {
             //時間減らしてる
             _second -= Time.deltaTime;
-
+            _timer += Time.deltaTime;
+            if(_timer > 1)
+            {
+                _timerGauge.fillAmount -= 0.0167f;
+                _timer = 0;
+            }
             if(_second < 0)
             {
                 _limitTime.Value--;
@@ -50,6 +58,10 @@ public class GameManager : MonoBehaviour
                 _isGame = false;
             }
 
+        }
+        else
+        {
+            _result.SetActive(true);
         }
 
     }
