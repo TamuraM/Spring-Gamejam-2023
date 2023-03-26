@@ -20,6 +20,9 @@ public class Decision : InstanceSystem<Decision>
         }
     }
 
+    [SerializeField] GameObject _redPanel;
+    [SerializeField] GameObject _bluePanel;
+    [SerializeField] GameObject _yellowPanel;
     //服のパラメーターを格納する変数
     Parameter _clothes = new Parameter(0, 0, 0, 0, 0);
     //靴のパラメーターを格納する変数
@@ -29,6 +32,7 @@ public class Decision : InstanceSystem<Decision>
     //客のパラメーターを格納する変数
     Parameter _customer = new Parameter(0, 0, 0, 0, 0);
     GameManager _gameManager;
+
     //プロパティ化
     public Parameter Clothes { get => _clothes; set => _clothes = value; }
     public Parameter Shoes { get => _shoes; set => _shoes = value; }
@@ -53,55 +57,60 @@ public class Decision : InstanceSystem<Decision>
         int sexy = _clothes._sexy + _shoes._sexy + _accessory._sexy;
         //服と靴とアクセサリーのghostly値を合計
         int ghostly = _clothes._ghostly + _shoes._ghostly + _accessory._ghostly;
-
+        for(int i = 0; i < 5; i++)
+        {
+            _redPanel.transform.GetChild(i).SetSiblingIndex(Random.Range(0, 6));
+            _bluePanel.transform.GetChild(i).SetSiblingIndex(Random.Range(0, 6));
+            _yellowPanel.transform.GetChild(i).SetSiblingIndex(Random.Range(0, 6));
+        }
         //客の満足度によってスコアを変える
         if (_customer._cute <= cute && _customer._cool <= cool && _customer._amuseing <= amuseing && _customer._sexy <= sexy && _customer._ghostly <= ghostly)
         {
-            _gameManager.AddScore(500);
-            Destroy(customer.gameObject, 1f);
-            customerGenerator.Generate();
+            //_gameManager.AddScore(500);
+            ////Destroy(customer.gameObject, 1f);
+            //customerGenerator.Generate();
             Debug.Log("大満足");
         }
         else if (_customer._cute < cute)
         {
-            _gameManager.AddScore(100);
-            Destroy(customer.gameObject, 1f);
-            customerGenerator.Generate();
+            //_gameManager.AddScore(100);
+            ////Destroy(customer.gameObject, 1f);
+            //customerGenerator.Generate();
             Debug.Log("満足");
         }
         else if (_customer._cool < cool)
         {
-            _gameManager.AddScore(100);
-            Destroy(customer.gameObject, 1f);
-            customerGenerator.Generate();
+            //_gameManager.AddScore(100);
+            ////Destroy(customer.gameObject, 1f);
+            //customerGenerator.Generate();
             Debug.Log("満足");
         }
         else if (_customer._amuseing < amuseing)
         {
-            _gameManager.AddScore(100);
-            Destroy(customer.gameObject, 1f);
-            customerGenerator.Generate();
+            //_gameManager.AddScore(100);
+            ////Destroy(customer.gameObject, 1f);
+            //customerGenerator.Generate();
             Debug.Log("満足");
         }
         else if (_customer._sexy < sexy)
         {
-            _gameManager.AddScore(100);
-            Destroy(customer.gameObject, 1f);
-            customerGenerator.Generate();
+            //_gameManager.AddScore(100);
+            ////Destroy(customer.gameObject, 1f);
+            //customerGenerator.Generate();
             Debug.Log("満足");
         }
         else if (_customer._ghostly < ghostly)
         {
-            _gameManager.AddScore(100);
-            Destroy(customer.gameObject, 1f);
-            customerGenerator.Generate();
+            //_gameManager.AddScore(100);
+            //Destroy(customer.gameObject, 1f);
+            //customerGenerator.Generate();
             Debug.Log("満足");
         }
         else
         {
-            _gameManager.AddScore(10);
-            Destroy(customer.gameObject, 1f);
-            customerGenerator.Generate();
+            //_gameManager.AddScore(10);
+            //Destroy(customer.gameObject, 1f);
+            //customerGenerator.Generate();
             Debug.Log("不満");
         }
     }
