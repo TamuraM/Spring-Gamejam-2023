@@ -30,6 +30,11 @@ public class CostumeChange : MonoBehaviour
     [Header("衣装の画像")]
     GameObject _costumeImage;
 
+    public int CuteParameter { get => _cuteParameter; }
+    public int CoolParameter { get => _coolParameter; }
+    public int AmuseingParameter { get => _amuseingParameter; }
+    public int SexyParameter { get => _sexyParameter; }
+    public int GhostlyParameter { get => _ghostlyParameter; }
     //各種パーツがついているかの判定
     bool _clotheAttached = false;
     bool _shoseAttached = false;
