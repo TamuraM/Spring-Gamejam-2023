@@ -49,11 +49,11 @@ public class TimeScoreUI : MonoBehaviour
         _timeText.text = time.ToString(); //タイマーテキストを変更
         //_timerGauge.fillAmount -= 0.0167f; //ゲージも減らす
 
-        /*if(time <= 30)
+        if(time <= 30)
         {
             _playerNormal.SetActive(false);
             _playerAseri.SetActive(true);
-        }*/
+        }
         
         if (time <= 10) //10秒以下になったら赤く点滅しだす
         {
