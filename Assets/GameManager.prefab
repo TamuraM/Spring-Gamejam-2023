@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2153376794644035345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2153376794644035375}
+  - component: {fileID: 2153376794644035374}
+  - component: {fileID: 2153376794644035373}
+  - component: {fileID: 2153376794644035372}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2153376794644035375
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2153376794644035345}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 929.961, y: 602.63617, z: 8.026467}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2153376794644035374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2153376794644035345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0de296dff4b42f4aa126f336b98a548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _orderBorder: 25
+  _orderText: {fileID: 0}
+  diaLogues:
+  - "\u304B\u308F\u3044\u3044\u670D\u304C\u3044\u3044\u306A\u3041"
+  - "\u304B\u3063\u3053\u3044\u3044\u670D\u304C\u3044\u3044\u306A\u3041"
+  - "\u9762\u767D\u3044\u670D\u304C\u3044\u3044\u306A\u3041"
+  - "\u30BB\u30AF\u30B7\u30FC\u306A\u670D\u304C\u3044\u3044\u306A\u3041"
+  - "\u3053\u308F\u3044\u670D\u304C\u3044\u3044\u306A\u3041"
+  - "\u304B\u308F\u304B\u3063\u3053\u3044\u3044\u670D\u304C\u3044\u3044\u306A\u3041"
+  - "\u304B\u308F\u9762\u767D\u3044\u670D\u304C\u3044\u3044\u306A\u3041"
+  - "\u304B\u308F\u30BB\u30AF\u30B7\u30FC\u670D\u304C\u3044\u3044\u306A\u3041"
+  - "\u304B\u308F\u3053\u308F\u3044\u670D\u304C\u3044\u3044\u306A\u3041"
+  - "\u30AB\u30C3\u30B3\u3088\u304F\u9762\u767D\u3044\u670D\u304C\u3044\u3044\u306A\u3041"
+  - "\u30AB\u30C3\u30B3\u3088\u304F\u30BB\u30AF\u30B7\u30FC\u670D\u304C\u3044\u3044\u306A\u3041"
+  - "\u3053\u308F\u30AB\u30C3\u30B3\u3044\u3044\u670D\u304C\u3044\u3044\u306A\u3041"
+  - "\u9762\u767D\u304F\u3066\u30BB\u30AF\u30B7\u30FC\u306A\u670D\u304C\u3044\u3044\u306A\u3041"
+  - "\u9762\u767D\u3053\u308F\u3044\u670D\u304C\u3044\u3044\u306A\u3041"
+  - "\u3053\u308F\u30BB\u30AF\u30B7\u30FC\u670D\u304C\u3044\u3044\u306A\u3041"
+  - "\u597D\u307F\u306E\u670D\u304C\u3044\u3044\u306A\u3041"
+  _womenRatio: 80
+--- !u!114 &2153376794644035373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2153376794644035345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbc22cf932ec83d42b904a017016be77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _limitTime:
+    value: 60
+  _score:
+    value: 0
+  _isGame: 1
+  _result: {fileID: 0}
+  _countDown: {fileID: 0}
+--- !u!114 &2153376794644035372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2153376794644035345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f0b7782225aca64ebb073f62e60aa86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameManager: {fileID: 2153376794644035373}
+  _timeText: {fileID: 0}
+  _timerGauge: {fileID: 0}
+  _fontSizeMax: 40
+  _scoreText: {fileID: 0}
+  _plusScoreText: {fileID: 0}
