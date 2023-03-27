@@ -60,10 +60,6 @@ public class Decision : InstanceSystem<Decision>
         {
             _decisionButton.enabled = false;
         }
-        else
-        {
-            _decisionButton.enabled = true;
-        }
     }
     public void DecisionButton()
     {
