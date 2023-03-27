@@ -10,10 +10,15 @@ public class TimeScoreUI : MonoBehaviour
 {
     [SerializeField, Tooltip("ゲームマネージャー")] private GameManager _gameManager = default;
 
-    [Header("UI関係")]
+    [Header("時間関係")]
     [SerializeField, Tooltip("制限時間を表示するText")] private Text _timeText = default;
-    [SerializeField, Tooltip("制限時間の後ろにあるゲージ")] Image _timerGauge;
+    //[SerializeField, Tooltip("制限時間の後ろにあるゲージ")] private Image _timerGauge;
+    //[SerializeField, Tooltip("時計の針")] private GameObject _watch = default;
     [SerializeField, Tooltip("制限時間が少なくなった時、フォントがどこまで大きくなるか")] private int _fontSizeMax = 40;
+    [SerializeField, Tooltip("プレイヤーの顔")] private GameObject _playerNormal = default;
+    [SerializeField, Tooltip("プレイヤーの焦ってる顔")] private GameObject _playerAseri = default;
+
+    [Header("スコア関係")]
     [SerializeField, Tooltip("スコアを表示するText")] private Text _scoreText = default;
     [Tooltip("前回のスコア")] private int _oldScore = default;
     [SerializeField, Tooltip("スコアプラス表示")] private Text _plusScoreText = default;
@@ -25,6 +30,8 @@ public class TimeScoreUI : MonoBehaviour
         _gameManager.Score.Subscribe(score => ChangeScoreText(score));
         _oldScore = 0;
         _plusScoreText.enabled = false;
+        /*_watch.transform.DORotate(new Vector3(0, 0, 180), 30)
+            .SetEase(Ease.Linear).SetLoops(2, LoopType.Incremental).SetAutoKill();*/
     }
 
     /// <summary>制限時間が減った時にテキストを変えたりする</summary>
@@ -40,8 +47,14 @@ public class TimeScoreUI : MonoBehaviour
         }
 
         _timeText.text = time.ToString(); //タイマーテキストを変更
-        _timerGauge.fillAmount -= 0.0167f; //ゲージも減らす
+        //_timerGauge.fillAmount -= 0.0167f; //ゲージも減らす
 
+        /*if(time <= 30)
+        {
+            _playerNormal.SetActive(false);
+            _playerAseri.SetActive(true);
+        }*/
+        
         if (time <= 10) //10秒以下になったら赤く点滅しだす
         {
             //赤く点滅

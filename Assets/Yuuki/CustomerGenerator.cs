@@ -111,11 +111,11 @@ public class CustomerGenerator : MonoBehaviour
         {
             //「好み」で注文されたときは、キャラが確定している
             case NextOrder.Chara1: return customers[0];
-            case NextOrder.Chara2: return customers[1];
-            case NextOrder.Chara3: return customers[2];
-            case NextOrder.Chara4: return customers[3];
-            case NextOrder.Chara5: return customers[4];
-            case NextOrder.Chara6: return customers[5];
+            case NextOrder.Chara2: return customers[2];
+            case NextOrder.Chara3: return customers[4];
+            case NextOrder.Chara4: return customers[6];
+            case NextOrder.Chara5: return customers[7];
+            case NextOrder.Chara6: return customers[8];
 
             default:
                 //「好み」以外で注文されたときは、キャラはランダムに決まる
@@ -124,11 +124,11 @@ public class CustomerGenerator : MonoBehaviour
                 float tempRatio = (7.0f / 5.0f) * _womenRatio - 4.0f;
                 if (lot < tempRatio)
                 {
-                    customerIndex = UnityEngine.Random.Range(0, 3);
+                    customerIndex = UnityEngine.Random.Range(0, 6);
                 }
                 else
                 {
-                    customerIndex = UnityEngine.Random.Range(4, 6);
+                    customerIndex = UnityEngine.Random.Range(6, 9);
                 }
                 return customers[customerIndex];
         }
