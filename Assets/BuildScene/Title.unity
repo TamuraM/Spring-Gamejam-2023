@@ -625,8 +625,6 @@ PlayableDirector:
     value: {fileID: 1601663134}
   - key: {fileID: -6578310340417662459, guid: 481d952c6e7ca074eb413f0fc10c6a37, type: 2}
     value: {fileID: 991535009}
-  - key: {fileID: 5970175177170202983, guid: 481d952c6e7ca074eb413f0fc10c6a37, type: 2}
-    value: {fileID: 1095828503}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &356046667
@@ -8619,10 +8617,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 179500674}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1973434690}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: SceneLoad
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
