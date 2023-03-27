@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
 
     }
 
+    /// <summary>引数に指定した数値分スコアが加算される</summary>
+    /// <param name="score"></param>
     public void AddScore(int score)
     {
         _score.Value += score;
