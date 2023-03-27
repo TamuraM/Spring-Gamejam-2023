@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
-using UnityEngine.UI; 
 
 /// <summary>ゲームの制限時間とスコアを管理します</summary>
 public class GameManager : MonoBehaviour
@@ -18,16 +17,17 @@ public class GameManager : MonoBehaviour
     /// <summary>今のスコア</summary>
     public ReactiveProperty<int> Score { get => _score; }
 
+    [Header("その他")]
     [SerializeField, Tooltip("ゲーム中かのフラグ")] private bool _isGame = false;
     /// <summary>ゲーム中かのフラグ</summary>
     public bool IsGame { get => _isGame; }
-    [SerializeField] Image _timerGauge;
-    [SerializeField] GameObject _result;
-    float _timer;
+    [SerializeField, Tooltip("リザルト")] private GameObject _result;
+    [SerializeField, Tooltip("カウントダウン")] private GameObject _countDown = default;
+
     void Start()
     {
         //カウントダウンしてisGameをオンにする
-        _isGame = true;
+        StartCoroutine(CountDown());
     }
 
     void Update()
@@ -38,12 +38,7 @@ public class GameManager : MonoBehaviour
         {
             //時間減らしてる
             _second -= Time.deltaTime;
-            _timer += Time.deltaTime;
-            if(_timer > 1)
-            {
-                _timerGauge.fillAmount -= 0.0167f;
-                _timer = 0;
-            }
+
             if(_second < 0)
             {
                 _limitTime.Value--;
@@ -56,12 +51,9 @@ public class GameManager : MonoBehaviour
             if(_limitTime.Value < 0)
             {
                 _isGame = false;
+                _result.SetActive(true);
             }
 
-        }
-        else
-        {
-            _result.SetActive(true);
         }
 
     }
@@ -71,4 +63,13 @@ public class GameManager : MonoBehaviour
         _score.Value += score;
     }
 
+    /// <summary>カウントダウンする</summary>
+    /// <returns></returns>
+    private IEnumerator CountDown()
+    {
+        _countDown.SetActive(true);
+        yield return new WaitForSeconds(5);
+        _countDown.SetActive(false);
+        _isGame = true;
+    }
 }

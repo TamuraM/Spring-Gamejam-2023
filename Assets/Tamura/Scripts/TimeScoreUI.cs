@@ -12,6 +12,8 @@ public class TimeScoreUI : MonoBehaviour
 
     [Header("UI関係")]
     [SerializeField, Tooltip("制限時間を表示するText")] private Text _timeText = default;
+    [SerializeField, Tooltip("制限時間の後ろにあるゲージ")] Image _timerGauge;
+    [SerializeField, Tooltip("制限時間が少なくなった時、フォントがどこまで大きくなるか")] private int _fontSizeMax = 40;
     [SerializeField, Tooltip("スコアを表示するText")] private Text _scoreText = default;
     [Tooltip("前回のスコア")] private int _oldScore = default;
     [SerializeField, Tooltip("スコアプラス表示")] private Text _plusScoreText = default;
@@ -25,24 +27,20 @@ public class TimeScoreUI : MonoBehaviour
         _plusScoreText.enabled = false;
     }
 
-    void Update()
-    {
-        
-    }
-
     /// <summary>制限時間が減った時にテキストを変えたりする</summary>
     /// <param name="time"></param>
     private void ChangeTimeText(float time)
     {
         
-        //残り時間によってかわったりする
+        //残り時間なくなったらおわり
         if(time < 0)
         {
             _timeText.text = "0";
             return;
         }
 
-        _timeText.text = time.ToString();
+        _timeText.text = time.ToString(); //タイマーテキストを変更
+        _timerGauge.fillAmount -= 0.0167f; //ゲージも減らす
 
         if (time <= 10) //10秒以下になったら赤く点滅しだす
         {
@@ -51,7 +49,7 @@ public class TimeScoreUI : MonoBehaviour
             //フォントサイズが大きくなって小さくなる
             DOTween.To(() => _timeText.fontSize, //フォントサイズを
                 x => _timeText.fontSize = x, //xの値まで変更する
-                40, //xの値は40まで変化する
+                _fontSizeMax, //xの値は40まで変化する
                 0.3f)
                 .SetEase(Ease.Linear).SetLoops(2, LoopType.Yoyo).SetAutoKill(); //0.3秒かけて変化する
         }
