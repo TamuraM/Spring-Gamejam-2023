@@ -11,11 +11,11 @@ public class Result : MonoBehaviour
     {
         public int _score;
     }
-    [SerializeField, Tooltip("過去のハイスコアを表示")] Text _hightScoreText;
     [SerializeField, Tooltip("今回のスコアを表示")] Text _scoreText;
     [SerializeField, Tooltip("今回のランクを表示")] Image _rank;
     [SerializeField] Sprite[] _ranks;
     [SerializeField, Tooltip("ランクに応じた称号")] Text _comment;
+    [SerializeField] GameObject _newRecorde;
     [Header("各ランクの称号")]
     [SerializeField, Tooltip("Sランクの称号")] string _rankS;
     [SerializeField, Tooltip("Aランクの称号")] string _rankA;
@@ -30,10 +30,10 @@ public class Result : MonoBehaviour
         _gameManager = FindObjectOfType<GameManager>();
         if (_hightScore._score < _gameManager.Score.Value)
         {
+            _newRecorde.SetActive(true);
             _hightScore._score = _gameManager.Score.Value;
             _hightScore.OnSave();
         }
-        _hightScoreText.DOCounter(0, _hightScore._score, 5f);
         _scoreText.DOCounter(0, _gameManager.Score.Value, 5f);
         if (_gameManager.Score.Value >= 100000)
         {

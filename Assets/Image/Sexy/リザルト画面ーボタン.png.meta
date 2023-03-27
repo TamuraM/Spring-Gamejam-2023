@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -127,7 +127,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: "\u30EA\u30B6\u30EB\u30C8\u753B\u9762\u30FC\u30DC\u30BF\u30F3_0"
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 404
+        width: 268
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d8179015e4ac8942a102a196ce6e9a3
+      internalID: -2021287951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u30EA\u30B6\u30EB\u30C8\u753B\u9762\u30FC\u30DC\u30BF\u30F3_1"
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 404
+        width: 268
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1567eaabb9e62b24a9c5f3dcfd9f5994
+      internalID: -1532645605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u30EA\u30B6\u30EB\u30C8\u753B\u9762\u30FC\u30DC\u30BF\u30F3_2"
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 404
+        width: 268
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a918cd9a11793e142ad4d273848bd935
+      internalID: 189846729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -138,7 +201,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "\u30EA\u30B6\u30EB\u30C8\u753B\u9762\u30FC\u30DC\u30BF\u30F3_0": -2021287951
+      "\u30EA\u30B6\u30EB\u30C8\u753B\u9762\u30FC\u30DC\u30BF\u30F3_1": -1532645605
+      "\u30EA\u30B6\u30EB\u30C8\u753B\u9762\u30FC\u30DC\u30BF\u30F3_2": 189846729
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
