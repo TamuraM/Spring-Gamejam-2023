@@ -13,7 +13,8 @@ public class Result : MonoBehaviour
     }
     [SerializeField, Tooltip("過去のハイスコアを表示")] Text _hightScoreText;
     [SerializeField, Tooltip("今回のスコアを表示")] Text _scoreText;
-    [SerializeField, Tooltip("今回のランクを表示")] Text _rank;
+    [SerializeField, Tooltip("今回のランクを表示")] Image _rank;
+    [SerializeField] Sprite[] _ranks;
     [SerializeField, Tooltip("ランクに応じた称号")] Text _comment;
     [Header("各ランクの称号")]
     [SerializeField, Tooltip("Sランクの称号")] string _rankS;
@@ -36,22 +37,22 @@ public class Result : MonoBehaviour
         _scoreText.DOCounter(0, _gameManager.Score.Value, 5f);
         if (_gameManager.Score.Value >= 100000)
         {
-            _rank.text = "S";
+            _rank.sprite = _ranks[0];
             _comment.text = _rankS;
         }
         else if (_gameManager.Score.Value > 50000)
         {
-            _rank.text = "A";
+            _rank.sprite = _ranks[1];
             _comment.text = _rankA;
         }
         else if (_gameManager.Score.Value > 20000)
         {
-            _rank.text = "B";
+            _rank.sprite = _ranks[2];
             _comment.text = _rankB;
         }
         else
         {
-            _rank.text = "C";
+            _rank.sprite = _ranks[3];
             _comment.text = _rankC;
         }
     }
