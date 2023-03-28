@@ -30,8 +30,6 @@ public class TimeScoreUI : MonoBehaviour
         _gameManager.Score.Subscribe(score => ChangeScoreText(score));
         _oldScore = 0;
         _plusScoreText.enabled = false;
-        /*_watch.transform.DORotate(new Vector3(0, 0, 180), 30)
-            .SetEase(Ease.Linear).SetLoops(2, LoopType.Incremental).SetAutoKill();*/
     }
 
     /// <summary>制限時間が減った時にテキストを変えたりする</summary>

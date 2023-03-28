@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour
     public bool IsGame { get => _isGame; }
     [SerializeField, Tooltip("リザルト")] private GameObject _result;
     [SerializeField, Tooltip("カウントダウン")] private GameObject _countDown = default;
+    /// <summary>ゲームがスタートしたときに呼ばれるメソッド</summary>
+    public event System.Action OnGameStart;
+    /// <summary>ゲームが終わった時に呼ばれるメソッド</summary>
+    public event System.Action OnGameEnd;
 
     void Start()
     {
@@ -51,6 +55,7 @@ public class GameManager : MonoBehaviour
             if(_limitTime.Value < 0)
             {
                 _isGame = false;
+                OnGameEnd();
                 _result.SetActive(true);
             }
 
@@ -73,5 +78,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(5);
         _countDown.SetActive(false);
         _isGame = true;
+        OnGameStart();
     }
 }
