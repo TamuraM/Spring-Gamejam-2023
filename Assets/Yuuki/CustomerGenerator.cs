@@ -79,19 +79,19 @@ public class CustomerGenerator : MonoBehaviour
             case NextOrder.Sexy: Decision.Instance.Customer._sexy = _orderBorder; break;
             case NextOrder.Ghostly: Decision.Instance.Customer._ghostly = _orderBorder; break;
 
-            case NextOrder.CuteAndCool: Decision.Instance.Customer._cute = _orderBorder; Decision.Instance.Customer._cool = _orderBorder; break;
-            case NextOrder.CuteAndAmusing: Decision.Instance.Customer._cute = _orderBorder; Decision.Instance.Customer._amuseing = _orderBorder; break;
-            case NextOrder.CuteAndSexy: Decision.Instance.Customer._cute = _orderBorder; Decision.Instance.Customer._sexy = _orderBorder; break;
-            case NextOrder.CuteAndGhostly: Decision.Instance.Customer._cute = _orderBorder; Decision.Instance.Customer._ghostly = _orderBorder; break;
+            case NextOrder.CuteAndCool: Decision.Instance.Customer._cute = _orderBorder - 20; Decision.Instance.Customer._cool = _orderBorder - 40; break;
+            case NextOrder.CuteAndAmusing: Decision.Instance.Customer._cute = _orderBorder - 20; Decision.Instance.Customer._amuseing = _orderBorder - 40; break;
+            case NextOrder.CuteAndSexy: Decision.Instance.Customer._cute = _orderBorder - 20; Decision.Instance.Customer._sexy = _orderBorder - 40; break;
+            case NextOrder.CuteAndGhostly: Decision.Instance.Customer._cute = _orderBorder - 20; Decision.Instance.Customer._ghostly = _orderBorder - 40; break;
 
-            case NextOrder.CoolAndAmusing: Decision.Instance.Customer._cool = _orderBorder; Decision.Instance.Customer._amuseing = _orderBorder; break;
-            case NextOrder.CoolAndSexy: Decision.Instance.Customer._cool = _orderBorder; Decision.Instance.Customer._sexy = _orderBorder; break;
-            case NextOrder.CoolAndGhostly: Decision.Instance.Customer._cool = _orderBorder; Decision.Instance.Customer._ghostly = _orderBorder; break;
+            case NextOrder.CoolAndAmusing: Decision.Instance.Customer._cool = _orderBorder - 20; Decision.Instance.Customer._amuseing = _orderBorder - 40; break;
+            case NextOrder.CoolAndSexy: Decision.Instance.Customer._cool = _orderBorder - 20; Decision.Instance.Customer._sexy = _orderBorder - 40; break;
+            case NextOrder.CoolAndGhostly: Decision.Instance.Customer._cool = _orderBorder - 20; Decision.Instance.Customer._ghostly = _orderBorder - 40; break;
 
-            case NextOrder.AmusingAndSexy: Decision.Instance.Customer._amuseing = _orderBorder; Decision.Instance.Customer._sexy = _orderBorder; break;
-            case NextOrder.AmusingAndGhostly: Decision.Instance.Customer._amuseing = _orderBorder; Decision.Instance.Customer._ghostly = _orderBorder; break;
+            case NextOrder.AmusingAndSexy: Decision.Instance.Customer._amuseing = _orderBorder - 20; Decision.Instance.Customer._sexy = _orderBorder - 40; break;
+            case NextOrder.AmusingAndGhostly: Decision.Instance.Customer._amuseing = _orderBorder - 20; Decision.Instance.Customer._ghostly = _orderBorder - 40; break;
 
-            case NextOrder.SexyAndGhostly: Decision.Instance.Customer._sexy = _orderBorder; Decision.Instance.Customer._ghostly = _orderBorder; break;
+            case NextOrder.SexyAndGhostly: Decision.Instance.Customer._sexy = _orderBorder - 20; Decision.Instance.Customer._ghostly = _orderBorder - 40; break;
 
             case NextOrder.Chara1: /*Chara1のキャラ設定に合わせてパラメーターを変える*/; break;
             case NextOrder.Chara2: /*Chara2のキャラ設定に合わせてパラメーターを変える*/; break;

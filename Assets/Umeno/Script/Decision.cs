@@ -82,6 +82,7 @@ public class Decision : InstanceSystem<Decision>
         this._clothes = new Parameter(0, 0, 0, 0, 0);
         this._shoes = new Parameter(0, 0, 0, 0, 0);
         this._accessory = new Parameter(0, 0, 0, 0, 0);
+        this._customer = new Parameter(3, 3, 3, 3, 3);
         for (int i = 0; i < 5; i++)
         {
             _clothesPanel.transform.GetChild(i).SetSiblingIndex(Random.Range(0, 6));
@@ -94,6 +95,8 @@ public class Decision : InstanceSystem<Decision>
             _customerControlle.Shoes[i].SetActive(false);
             _customerControlle.Accessories[i].SetActive(false);
         }
+        Debug.Log($"服のオーダー　Cute:{cute} Cool:{cool} Amuseing{amuseing} Sexy{sexy} Ghostly{ghostly}");
+        Debug.Log($"客のオーダー　Cute:{Customer._cute} Cool:{Customer._cool} Amuseing{Customer._amuseing} Sexy{Customer._sexy} Ghostly{Customer._ghostly}");
         //客の満足度によってスコアを変える
         if (this._customer._cute <= cute && this._customer._cool <= cool && this._customer._amuseing <= amuseing && this._customer._sexy <= sexy && this._customer._ghostly <= ghostly)
         {
