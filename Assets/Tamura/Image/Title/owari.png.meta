@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6908759425f828149a71f269862d3514
+guid: a26f5e8b453d01f4a9a71dae8664e4e5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: op_0
+      name: owari_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 268
-        width: 1489
-        height: 812
+        x: 238
+        y: 350
+        width: 372
+        height: 148
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,8 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7bfcc0854ca1a6a4d8dfc567214aeac5
-      internalID: -21505692
+      spriteID: 5a342cab871dbcf4ab423880abbf139b
+      internalID: 1390742729
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      op_0: -21505692
+      owari_0: 1390742729
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
