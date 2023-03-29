@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        OnGameStart += () => _isGame = true;
+        OnGameEnd += () => _isGame = false;
         //カウントダウンしてisGameをオンにする
         StartCoroutine(CountDown());
     }
@@ -54,7 +56,6 @@ public class GameManager : MonoBehaviour
             //リザルト流す
             if(_limitTime.Value < 0)
             {
-                _isGame = false;
                 OnGameEnd();
                 _result.SetActive(true);
             }
@@ -77,7 +78,6 @@ public class GameManager : MonoBehaviour
         _countDown.SetActive(true);
         yield return new WaitForSeconds(5);
         _countDown.SetActive(false);
-        _isGame = true;
         OnGameStart();
     }
 }
