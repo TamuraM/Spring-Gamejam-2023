@@ -26,6 +26,7 @@ public class Decision : InstanceSystem<Decision>
     [SerializeField, Tooltip("アクセサリーのオブジェクト配列")] GameObject _accessoryPanel;
     [SerializeField] ParticleSystem _successEffect;
     [SerializeField] ParticleSystem _failedEffect;
+    [SerializeField] GameObject[] _bgms;
     //服のパラメーターを格納する変数
     public Parameter _clothes = new Parameter(0, 0, 0, 0, 0);
     //靴のパラメーターを格納する変数
@@ -46,13 +47,26 @@ public class Decision : InstanceSystem<Decision>
     public Parameter Shoes { get => _shoes; set => _shoes = value; }
     public Parameter Accessory { get => _accessory; set => _accessory = value; }
     public Parameter Customer { get => _customer; set => _customer = value; }
-
-    private void Start()
+    private void Awake()
     {
         _gameManager = FindObjectOfType<GameManager>();
         _decisionButton = GetComponent<Button>();
         _customerGenerator = FindObjectOfType<CustomerGenerator>();
         _customerGenerator.Generate();
+    }
+    private void OnEnable()
+    {
+        _gameManager.OnGameEnd += BgmChange;
+
+    }
+    private void OnDisable()
+    {
+        _gameManager.OnGameEnd -= BgmChange;
+    }
+    public void BgmChange()
+    {
+        _bgms[0].SetActive(false);
+        _bgms[1].SetActive(true);
     }
     private void Update()
     {
@@ -70,6 +84,7 @@ public class Decision : InstanceSystem<Decision>
         AudioController.Instance.SePlay(SelectAudio.Select);
         _customerControlle = FindObjectOfType<CustomerController>();
         _customerGenerator = FindObjectOfType<CustomerGenerator>();
+        _customerControlle.ImageChange(false);
         //服と靴とアクセサリーのcute値を合計
         int cute = _clothes._cute + _shoes._cute + _accessory._cute;
         //服と靴とアクセサリーのcool値を合計

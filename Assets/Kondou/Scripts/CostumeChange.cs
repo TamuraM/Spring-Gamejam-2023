@@ -26,9 +26,7 @@ public class CostumeChange : MonoBehaviour
     [Header("こわいパラメーター")]
     int _ghostlyParameter;
 
-    [SerializeField]
-    [Header("衣装の画像")]
-    GameObject _costumeImage;
+    [SerializeField] bool _isAmuseing;
 
     public int CuteParameter { get => _cuteParameter; }
     public int CoolParameter { get => _coolParameter; }
@@ -36,23 +34,23 @@ public class CostumeChange : MonoBehaviour
     public int SexyParameter { get => _sexyParameter; }
     public int GhostlyParameter { get => _ghostlyParameter; }
     //各種パーツがついているかの判定
-    bool _clotheAttached = false;
-    bool _shoseAttached = false;
-    bool _accessoryAttached = false;
+    //bool _clotheAttached = false;
+    //bool _shoseAttached = false;
+    //bool _accessoryAttached = false;
 
     CustomerController _customerController;
     public void SetClothes()
     {
         AudioController.Instance.SePlay(SelectAudio.Select);
         _customerController = FindObjectOfType<CustomerController>();
-        if (_clotheAttached == true)
+        if (_customerController.Dresses.Length > 0)
         {
             for (int i = 0; i < _customerController.Dresses.Length; i++)
             {
                 _customerController.Dresses[i].SetActive(false);
             }
         }
-        else _clotheAttached = true;
+        //else _clotheAttached = true;
         _customerController.Dresses[_index].SetActive(true);
         Decision.Instance.Clothes._cute = _cuteParameter;
         Decision.Instance.Clothes._cool = _coolParameter;
@@ -64,14 +62,14 @@ public class CostumeChange : MonoBehaviour
     {
         AudioController.Instance.SePlay(SelectAudio.Select);
         _customerController = FindObjectOfType<CustomerController>();
-        if (_shoseAttached == true)
+        if (_customerController.Shoes.Length > 0)
         {
             for (int i = 0; i < _customerController.Shoes.Length; i++)
             {
                 _customerController.Shoes[i].SetActive(false);
             }
         }
-        else _shoseAttached = true;
+        //else _shoseAttached = true;
         _customerController.Shoes[_index].SetActive(true);
         Decision.Instance.Shoes._cute = _cuteParameter;
         Decision.Instance.Shoes._cool = _coolParameter;
@@ -83,14 +81,15 @@ public class CostumeChange : MonoBehaviour
     {
         AudioController.Instance.SePlay(SelectAudio.Select);
         _customerController = FindObjectOfType<CustomerController>();
-        if (_accessoryAttached == true)
+        _customerController.ImageChange(_isAmuseing);
+        if (_customerController.Accessories.Length > 0)
         {
             for (int i = 0; i < _customerController.Accessories.Length; i++)
             {
                 _customerController.Accessories[i].SetActive(false);
             }
         }
-        else _accessoryAttached = true;
+        //else _accessoryAttached = true;
         _customerController.Accessories[_index].SetActive(true);
         Decision.Instance.Accessory._cute = _cuteParameter;
         Decision.Instance.Accessory._cool = _coolParameter;
