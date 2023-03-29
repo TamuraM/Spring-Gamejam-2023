@@ -43,6 +43,7 @@ public class CostumeChange : MonoBehaviour
     CustomerController _customerController;
     public void SetClothes()
     {
+        AudioController.Instance.SePlay(SelectAudio.Select);
         _customerController = FindObjectOfType<CustomerController>();
         if (_clotheAttached == true)
         {
@@ -61,6 +62,7 @@ public class CostumeChange : MonoBehaviour
     }
     public void SetShoes()
     {
+        AudioController.Instance.SePlay(SelectAudio.Select);
         _customerController = FindObjectOfType<CustomerController>();
         if (_shoseAttached == true)
         {
@@ -79,6 +81,7 @@ public class CostumeChange : MonoBehaviour
     }
     public void SetAccessory()
     {
+        AudioController.Instance.SePlay(SelectAudio.Select);
         _customerController = FindObjectOfType<CustomerController>();
         if (_accessoryAttached == true)
         {

@@ -4,6 +4,7 @@ using UnityEngine;
 using UniRx;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class Result : MonoBehaviour
 {
@@ -54,6 +55,21 @@ public class Result : MonoBehaviour
         {
             _rank.sprite = _ranks[3];
             _comment.text = _rankC;
+        }
+    }
+    public void ClearSceneMove()
+    {
+        if(_gameManager.Score.Value > 100000)
+        {
+            SceneManager.LoadScene("NewTrueClear");
+        }
+        else if(_gameManager.Score.Value > 50000)
+        {
+            SceneManager.LoadScene("NewNormalClear");
+        }
+        else
+        {
+            SceneManager.LoadScene("NewBadClear");
         }
     }
 }

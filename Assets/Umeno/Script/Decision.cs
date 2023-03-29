@@ -67,6 +67,7 @@ public class Decision : InstanceSystem<Decision>
     }
     public void DecisionButton()
     {
+        AudioController.Instance.SePlay(SelectAudio.Select);
         _customerControlle = FindObjectOfType<CustomerController>();
         _customerGenerator = FindObjectOfType<CustomerGenerator>();
         //服と靴とアクセサリーのcute値を合計
