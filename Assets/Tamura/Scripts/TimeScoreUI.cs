@@ -22,6 +22,7 @@ public class TimeScoreUI : MonoBehaviour
     [SerializeField, Tooltip("スコアを表示するText")] private Text _scoreText = default;
     [Tooltip("前回のスコア")] private int _oldScore = default;
     [SerializeField, Tooltip("スコアプラス表示")] private Text _plusScoreText = default;
+    [SerializeField] Color _redColor;
 
     void Start()
     {
@@ -55,8 +56,9 @@ public class TimeScoreUI : MonoBehaviour
         
         if (time <= 10) //10秒以下になったら赤く点滅しだす
         {
-            //赤く点滅
-            _timeText.DOColor(Color.red, 0.3f).SetEase(Ease.Linear).SetLoops(2, LoopType.Yoyo).SetAutoKill();
+            _timeText.color = _redColor;
+            ////赤く点滅
+            //_timeText.DOColor(Color.red, 0.3f).SetEase(Ease.Linear).SetLoops(2, LoopType.Yoyo).SetAutoKill();
             //フォントサイズが大きくなって小さくなる
             DOTween.To(() => _timeText.fontSize, //フォントサイズを
                 x => _timeText.fontSize = x, //xの値まで変更する
