@@ -8,10 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/BuildScene/Title.unity
     guid: 2895b7de37d114f4196b598c31e3210f
-  - enabled: 0
-    path: Assets/BuildScene/Game.unity
-    guid: efb9d2f0886cf3b43bef06003cd81381
   - enabled: 1
     path: Assets/BuildScene/NewGame.unity
     guid: 2a98789ce1cf423408a8c257e1c4e346
+  - enabled: 1
+    path: Assets/BuildScene/NewTrueClear.unity
+    guid: e86e492c10ddd5544ae9f8e130c01237
+  - enabled: 1
+    path: Assets/BuildScene/NewNormalClear.unity
+    guid: 6e1c5f590f4e012419f30cf0cfa46d5c
+  - enabled: 1
+    path: Assets/BuildScene/NewBadClear.unity
+    guid: cb0e3e9494ba0bc4b8fc06c288ca4f98
   m_configObjects: {}
